@@ -10,8 +10,8 @@ function Card(props) {
 	};
 
 	return (
-		<div className="col-3 mb-3">
-			<div className={`card text-${color}`}>
+		<div className="col mb-3">
+			<div className={`card text-${color} card-size`}>
 				<div className="card-header text-start">
 					<u>{props.abrev}</u>&nbsp;
 					<i class={`bi bi-suit-${props.suit}-fill`}></i>
@@ -49,10 +49,7 @@ function CardDeck() {
 			})
 	}, []);
 
-	function shuffle() {
-		const shuffledCards = shuffleArray(cards, 5);
-		setCards([...shuffledCards]);
-	}
+	{/* add a handler function for the shuffle button here */}
 
 	const cardComponents = cards.length === 0 ?
 		(<p><span className="spinner-border"/> Loading...</p>) :
@@ -71,13 +68,9 @@ function CardDeck() {
 	return (
 		<div className="row">
 			<div className="col border rounded py-2">
-				<button
-					className="btn btn-warning"
-					type="button"
-					onClick={shuffle}
-				>
-					Shuffle the deck
-				</button>
+				
+				{/* add a button here to shuffle the deck */}
+
 				<h2>Card components:</h2>
 				<div className="row mt-4">{cardComponents}</div>
 			</div>
@@ -101,7 +94,7 @@ function Die(props) {
 
 	return (
 		<button
-			className="btn btn-success me-2 px-4"
+			className="btn btn-success me-2 px-4 square"
 			type="button"
 			onClick={roll}
 		>
@@ -143,13 +136,24 @@ function App() {
 		return <Die sides={num} key={num} />
 	});
 
+	{/* add a handler function for the ClickCounter form here */}
+
+	{/* add a handler for the Die select here */}
+
 	return (
 		<>
 			<h1>ClickCounter component:</h1>
+
+			{/* add a form that adds new counters with user input for
+				initialCount */}
+
 			<ClickCounter initialCount={0} />
 
 			<h1>Die components:</h1>
 			<div className="row mb-5">
+
+				{/* add a select that adds new dice of different sizes */}
+
 				<div className="col border rounded py-2">
 					{dieComponents}
 				</div>
